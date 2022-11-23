@@ -1,30 +1,50 @@
 <script setup lang="ts">
 import dialogPolyfill from "dialog-polyfill";
-import { ref, onMounted, toRefs, defineProps } from "vue";
+import { ref, onMounted, defineProps, watch, defineEmits } from "vue";
 
 interface VDialogProps {
   open: boolean;
 }
 
-const dialogEl = ref<HTMLDialogElement | null>(null);
+interface DialogElement extends HTMLDialogElement {
+  showModal: () => void;
+  close: () => void;
+}
 
-const { open } = defineProps<VDialogProps>();
+const dialogEl = ref<DialogElement | null>(null);
 
-const emit = defineEmits(["cancel", "close"]);
+const props = defineProps<VDialogProps>();
+
+const emits = defineEmits<{
+  (e: "cancel", event: Event): void;
+  (e: "close", event: Event): void;
+}>();
 
 onMounted(() => {
-  if (dialogEl.value && typeof dialogEl.value?.showModal === "function") {
-    dialogPolyfill.registerDialog(dialogEl);
+  if (dialogEl.value && !(typeof dialogEl.value?.showModal === "function")) {
+    dialogPolyfill.registerDialog(dialogEl.value);
   }
 });
 
-const onClose = () => {
-  console.log("on close");
+watch(
+  () => props.open,
+  (newValue) => {
+    newValue ? dialogEl?.value?.showModal() : dialogEl?.value?.close();
+  }
+);
+
+const onCancel = (e: Event) => {
+  e.preventDefault();
+  emits("cancel", e);
+};
+
+const onClose = (e: Event) => {
+  emits("close", e);
 };
 </script>
 
 <template>
-  <dialog :open="open" ref="el" onCancel="onClose" onClose="onClose">
+  <dialog ref="dialogEl" @cancel="onCancel" @close="onClose">
     <slot> </slot>
   </dialog>
 </template>
