@@ -3,18 +3,31 @@ import Vdialog from "../lib/V-dialog.vue";
 import { ref } from "vue";
 const isVisible = ref(false);
 
-function increment() {
+function toggle() {
   isVisible.value = !isVisible.value;
 }
+
+const onCancel = () => {
+  console.log("Dialog Canceled");
+};
+
+const onClose = () => {
+  console.log("Dialog Closed");
+};
 </script>
 
 <template>
   <div>
-    <Vdialog :open="isVisible" class="marko">
-      <p>Zdravoo markoooo</p>
+    <Vdialog
+      :open="isVisible"
+      class="marko"
+      @cancel="onCancel"
+      @close="onClose"
+    >
+      <p>Some important content</p>
+      <button @click="toggle">Close</button>
     </Vdialog>
-
-    <button @click="increment">show dialog</button>
+    <button @click="toggle">show dialog</button>
   </div>
 </template>
 
