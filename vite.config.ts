@@ -1,10 +1,11 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vuetypeimports from 'vite-plugin-vue-type-imports'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), vuetypeimports(),],
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),

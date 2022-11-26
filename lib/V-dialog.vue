@@ -8,7 +8,8 @@ import {
   defineEmits,
   withDefaults,
 } from "vue";
-import { VDialog, DialogElement } from "./types";
+
+import type { VDialog, DialogElement } from "./types";
 
 const props = withDefaults(defineProps<VDialog>(), {
   open: false,
