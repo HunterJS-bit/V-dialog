@@ -8,20 +8,9 @@ import {
   defineEmits,
   withDefaults,
 } from "vue";
+import { VDialog, DialogElement } from "./types";
 
-interface VDialogProps {
-  open?: boolean;
-  isModal?: boolean;
-  backdropStyles?: object;
-}
-
-interface DialogElement extends HTMLDialogElement {
-  showModal: () => void;
-  show: () => void;
-  close: () => void;
-}
-
-const props = withDefaults(defineProps<VDialogProps>(), {
+const props = withDefaults(defineProps<VDialog>(), {
   open: false,
   isModal: false,
 });

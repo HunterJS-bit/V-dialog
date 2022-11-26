@@ -1,18 +1,33 @@
 {
   "name": "v-dialog",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/v-dialog.umd.cjs",
+  "module": "./dist/v-dialog.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/v-dialog.js",
+      "require": "./dist/v-dialog.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:types": "vue-tsc --project ./lib/types.ts --declaration --emitDeclarationOnly --outDir ./dist/main.d.ts ",
+    "typecheck": "vue-tsc --project tsconfig.build-types.json --noEmit"
   },
   "dependencies": {
     "dialog-polyfill": "^0.5.6",
     "vue": "^3.2.41"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.1.20",
     "@types/node": "^18.11.9",
     "@vitejs/plugin-vue": "^3.2.0",
     "typescript": "^4.6.4",
