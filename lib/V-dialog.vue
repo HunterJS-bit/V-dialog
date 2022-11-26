@@ -11,15 +11,19 @@ import {
 
 interface VDialogProps {
   open?: boolean;
+  isModal?: boolean;
+  backdropStyles?: object;
 }
 
 interface DialogElement extends HTMLDialogElement {
   showModal: () => void;
+  show: () => void;
   close: () => void;
 }
 
 const props = withDefaults(defineProps<VDialogProps>(), {
   open: false,
+  isModal: false,
 });
 
 const emits = defineEmits<{
@@ -38,7 +42,11 @@ onMounted(() => {
 watch(
   () => props.open,
   (newValue) => {
-    newValue ? dialogEl?.value?.showModal() : dialogEl?.value?.close();
+    newValue
+      ? props.isModal
+        ? dialogEl?.value?.showModal()
+        : dialogEl?.value?.show()
+      : dialogEl?.value?.close();
   }
 );
 
@@ -54,7 +62,7 @@ const onClose = (e: Event) => {
 
 
 <template>
-  <dialog ref="dialogEl" @cancel="onCancel" @close="onClose">
+  <dialog class="v-dialog" ref="dialogEl" @cancel="onCancel" @close="onClose">
     <slot> </slot>
   </dialog>
 </template>
