@@ -53,9 +53,36 @@ const onClose = (e: Event) => {
 
 <template>
   <dialog class="v-dialog" ref="dialogEl" @cancel="onCancel" @close="onClose">
-    <slot> </slot>
+    <div class="v-dialog-content">
+      <slot> </slot>
+    </div>
   </dialog>
 </template>
 
 <style scoped>
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog.v-dialog {
+  padding: 0;
+  border: 0;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 1em black;
+}
+
+dialog.v-dialog::backdrop {
+  /* make the backdrop a semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* dialog polyfill backdrop support **/
+dialog + .backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.v-dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
