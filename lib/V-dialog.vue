@@ -12,6 +12,8 @@ const props = withDefaults(defineProps<VDialog>(), {
 const emits = defineEmits<{
   (e: "cancel", event: Event): void;
   (e: "close", event: Event): void;
+  (e: "click", event: Event): void;
+  (e: "outside-click", event: Event): void;
 }>();
 
 const dialogEl = ref<DialogElement | null>(null);
@@ -41,11 +43,29 @@ const onCancel = (e: Event) => {
 const onClose = (e: Event) => {
   emits("close", e);
 };
+
+const onClick = (event: MouseEvent) => {
+  const rect = dialogEl && dialogEl.value?.getBoundingClientRect();
+  if (rect) {
+    const isInsideDialog =
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width;
+    isInsideDialog ? emits("click", event) : emits("outside-click", event);
+  }
+};
 </script>
 
 
 <template>
-  <dialog class="v-dialog" ref="dialogEl" @cancel="onCancel" @close="onClose">
+  <dialog
+    class="v-dialog"
+    ref="dialogEl"
+    @click="onClick"
+    @cancel="onCancel"
+    @close="onClose"
+  >
     <div class="v-dialog-content">
       <slot> </slot>
     </div>
@@ -73,7 +93,7 @@ dialog.v-dialog::backdrop {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.35);
   opacity: 1;
   transition: all 0.3s ease;
   outline: 0;
@@ -85,7 +105,7 @@ dialog + .backdrop {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.35);
   opacity: 1;
   transition: all 0.3s ease;
   outline: 0;

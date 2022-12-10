@@ -14,6 +14,10 @@ const onCancel = () => {
 const onClose = () => {
   console.log("Dialog Closed");
 };
+
+const onDialogClick = () => {
+  console.log("Dialog clicked");
+};
 </script>
 
 <template>
@@ -23,6 +27,7 @@ const onClose = () => {
       class="marko"
       @cancel="onCancel"
       @close="onClose"
+      @click="onDialogClick"
     >
       <p>Some important content</p>
       <button @click="toggle">Close</button>
