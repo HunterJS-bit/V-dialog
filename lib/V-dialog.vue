@@ -80,7 +80,9 @@ body:has(dialog[open]) {
 dialog.v-dialog {
   border: none;
   border-radius: calc(5px * var(--ratio));
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   padding: 1.6rem;
   max-width: 600px;
 }
@@ -93,7 +95,7 @@ dialog.v-dialog::backdrop {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(255, 255, 255, 0.75);
   opacity: 1;
   transition: all 0.3s ease;
   outline: 0;

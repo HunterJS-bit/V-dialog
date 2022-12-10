@@ -30,6 +30,7 @@ const onDialogClick = () => {
       @click="onDialogClick"
     >
       <p>Some important content</p>
+      <button @click="toggle">Open</button>
       <button @click="toggle">Close</button>
     </Vdialog>
     <button @click="toggle">show dialog</button>
