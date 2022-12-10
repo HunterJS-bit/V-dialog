@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import dialogPolyfill from "dialog-polyfill";
-import {
-  ref,
-  onMounted,
-  defineProps,
-  watch,
-  defineEmits,
-  withDefaults,
-} from "vue";
+import { ref, onMounted, watch, withDefaults } from "vue";
 
 import type { VDialog, DialogElement } from "./types";
 
 const props = withDefaults(defineProps<VDialog>(), {
   open: false,
-  isModal: false,
+  isDialog: false,
 });
 
 const emits = defineEmits<{
@@ -33,7 +26,7 @@ watch(
   () => props.open,
   (newValue) => {
     newValue
-      ? props.isModal
+      ? !props.isDialog
         ? dialogEl?.value?.showModal()
         : dialogEl?.value?.show()
       : dialogEl?.value?.close();
@@ -65,19 +58,37 @@ body:has(dialog[open]) {
 }
 
 dialog.v-dialog {
-  padding: 0;
-  border: 0;
-  border-radius: 0.6rem;
-  box-shadow: 0 0 1em black;
+  border: none;
+  border-radius: calc(5px * var(--ratio));
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 1.6rem;
+  max-width: 600px;
 }
 
 dialog.v-dialog::backdrop {
   /* make the backdrop a semi-transparent black */
+  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: all 0.3s ease;
+  outline: 0;
 }
 /* dialog polyfill backdrop support **/
 dialog + .backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: all 0.3s ease;
+  outline: 0;
 }
 .v-dialog-content {
   display: flex;

@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      name: 'VDialog',
+      name: 'Vdialog',
       // the proper extensions will be added
       fileName: 'v-dialog'
     },

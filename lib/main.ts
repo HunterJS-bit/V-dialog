@@ -1,2 +1,2 @@
-import VDialog from './V-dialog.vue'
-export { VDialog }
+import Vdialog from './V-dialog.vue'
+export default Vdialog
