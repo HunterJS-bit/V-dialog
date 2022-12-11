@@ -28,26 +28,77 @@ yarn add v-dialog
 
 ## Usage
 
-```vue
-import VDialog from 'v-dialog';
-const [modal, setModal] = useState(false);
+Vue 2 usage
 
-<VDialog
-  :open={modal}
-  onClose={() => {
-    setModal(false);
-  }}
->
-  <p>Your content</p>
-</VDialog>;
+```vue 
+<template>
+  <div>
+    <v-dialog open="open"></v-dialog>
+     <div class="toggleContainer">
+     <button @click="toggleDialog">
+       Toggle display 
+     </button> 
+  </div>
+</template>
+
+<script>
+import Vdialog from 'v-dialog';
+
+export default {
+  data() {
+    return {
+      open: false
+    };
+  },
+  components: {
+    vDialog: Vdialog
+  },
+  methods: {
+    toggleDialog() {
+      this.open = !this.open;
+    }
+  }
+};
+</script>
+
+```
+
+Vue 3 usage
+
+```vue 
+<script setup lang="ts">
+import Vdialog from 'v-dialog';
+import { ref } from "vue";
+const isVisible = ref(false);
+
+function toggle() {
+  isVisible.value = !isVisible.value;
+}
+
+</script>
+
+
+<template>
+  <VDialog
+    :open={modal}
+  >
+    <p>Your content</p>
+  </VDialog>;
+  <button @click="toggleDialog">toggle dialog</button>
+  </template>
 ```
 
 
 ## Options
 
-#### open `boolean` (default: false)
-
-Control modal state from parent component
+| Prop Name | Values |
+| ------ | ------ |
+| open | [plugins/dropbox/README.md][PlDb] |
+| GitHub | [plugins/github/README.md][PlGh] |
+| Google Drive | [plugins/googledrive/README.md][PlGd] |
+| OneDrive | [plugins/onedrive/README.md][PlOd] |
+| Medium | [plugins/medium/README.md][PlMe] |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
 
 
 ## Changelog
