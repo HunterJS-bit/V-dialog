@@ -8,6 +8,8 @@ const props = withDefaults(defineProps<VDialog>(), {
   open: false,
   isDialog: false,
   scrollable: false,
+  blur: false,
+  contentClass: null,
 });
 
 const emits = defineEmits<{
@@ -81,7 +83,7 @@ const onClick = (event: MouseEvent) => {
     @cancel="onCancel"
     @close="onClose"
   >
-    <div class="v-dialog-content">
+    <div class="v-dialog-content" :class="contentClass">
       <slot> </slot>
     </div>
   </dialog>
@@ -94,10 +96,11 @@ body.modal-open.overflowed {
 
 dialog.v-dialog {
   border: none;
-  border-radius: calc(5px * var(--ratio));
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+  -moz-box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+  box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+  box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
   padding: 1.6rem;
   max-width: 600px;
 }
@@ -114,6 +117,7 @@ dialog.v-dialog::backdrop {
   opacity: 1;
   transition: all 0.3s ease;
   outline: 0;
+  /* backdrop-filter: blur(3px); */
 }
 /* dialog polyfill backdrop support **/
 dialog + .backdrop {
@@ -126,6 +130,7 @@ dialog + .backdrop {
   opacity: 1;
   transition: all 0.3s ease;
   outline: 0;
+  /* backdrop-filter: blur(3px); */
 }
 .v-dialog-content {
   display: flex;

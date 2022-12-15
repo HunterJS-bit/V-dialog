@@ -1,10 +1,12 @@
 /// <reference types="vite/client" />
 
 export interface VDialog {
-    open?: boolean;
-    isModal?: boolean;
-    backdropStyles?: object | null;
-    scrollable?: false,
+    open?: boolean
+    isModal?: boolean
+    backdropStyles?: object | null
+    scrollable?: false
+    blur?: false
+    contentClass?: object | [] | null
 }
 
 export interface DialogElement extends HTMLDialogElement {
