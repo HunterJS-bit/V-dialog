@@ -7,6 +7,7 @@ import type { VDialog, DialogElement } from "./types";
 const props = withDefaults(defineProps<VDialog>(), {
   open: false,
   isDialog: false,
+  scrollable: false,
 });
 
 const emits = defineEmits<{
@@ -29,11 +30,25 @@ watch(
   (newValue) => {
     newValue
       ? !props.isDialog
-        ? dialogEl?.value?.showModal()
+        ? showModal()
         : dialogEl?.value?.show()
-      : dialogEl?.value?.close();
+      : closeModal();
   }
 );
+
+const showModal = () => {
+  if (!props.scrollable) {
+    document.body.classList.add("modal-open", "overflowed");
+  }
+  dialogEl?.value?.showModal();
+};
+
+const closeModal = () => {
+  if (!props.scrollable) {
+    document.body.classList.remove("modal-open", "overflowed");
+  }
+  dialogEl?.value?.close();
+};
 
 const onCancel = (e: Event) => {
   e.preventDefault();
@@ -73,7 +88,7 @@ const onClick = (event: MouseEvent) => {
 </template>
 
 <style scoped>
-body:has(dialog[open]) {
+body.modal-open.overflowed {
   overflow: hidden;
 }
 
