@@ -15,46 +15,39 @@ yarn add v-dialog
 
 ## Usage
 
-Import into your component:
-
-```javascript
-import { VDialog } from "v-dialog";
-
-export default {
-  // ...
-  components: {
-    VDialog
-  }
-}
-```
 
 ### Single file component
 <br>
 
 ```vue
 <template>
-  <v-dialog open=>
-  </v-dialog>
+  <div>
+    <v-dialog open="open"></v-dialog>
+     <div class="toggleContainer">
+     <button @click="toggleDialog">
+       Toggle display 
+     </button> 
+  </div>
 </template>
 
 <script>
-// ...
+import Vdialog from 'v-dialog';
+
+export default {
+  data() {
+    return {
+      open: false
+    };
+  },
+  components: {
+    vDialog: Vdialog
+  },
+  methods: {
+    toggleDialog() {
+      this.open = !this.open;
+    }
+  }
+};
 </script>
-
-<style>
-:root {
-  --bg: #fff;
-  --color: #333333;
-}
-
-html.dark-mode {
-  --bg: #232b32;
-  --color: #ddd8ca;
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--color);
-}
 </style>
 ```

@@ -49,13 +49,14 @@ module.exports = {
     sidebar: {
       '/guide/': [
         {
-          title: 'Guide',
+          text: 'Guide',
           collapsable: false,
           children: [
-            '/guide/README.md',
+            '/guide/',
             '/guide/getting-started.md',
-          ]
-        }
+            '/guide/i18n.md',
+          ],
+        },
       ],
 
     }
