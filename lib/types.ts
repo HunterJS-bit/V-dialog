@@ -7,6 +7,7 @@ export interface VDialog {
     scrollable?: false
     blur?: false
     contentClass?: object | [] | null
+    fullscreen: boolean
 }
 
 export interface DialogElement extends HTMLDialogElement {

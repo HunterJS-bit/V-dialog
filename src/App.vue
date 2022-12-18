@@ -24,6 +24,7 @@ const onDialogClick = () => {
   <div>
     <Vdialog
       :open="isVisible"
+      :fullscreen="true"
       class="marko"
       @cancel="onCancel"
       @close="onClose"

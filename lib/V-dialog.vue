@@ -10,6 +10,7 @@ const props = withDefaults(defineProps<VDialog>(), {
   scrollable: false,
   blur: false,
   contentClass: null,
+  fullscreen: false,
 });
 
 const emits = defineEmits<{
@@ -78,6 +79,7 @@ const onClick = (event: MouseEvent) => {
 <template>
   <dialog
     class="v-dialog"
+    :class="{ 'full-screen': fullscreen }"
     ref="dialogEl"
     @click="onClick"
     @cancel="onCancel"
@@ -92,6 +94,13 @@ const onClick = (event: MouseEvent) => {
 <style scoped>
 body.modal-open.overflowed {
   overflow: hidden;
+}
+
+dialog.v-dialog.full-screen {
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  margin: 0;
 }
 
 dialog.v-dialog {
