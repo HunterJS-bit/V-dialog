@@ -68,5 +68,14 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
+    ['@vuepress/register-components', {
+      components: [
+        {
+          name: 'v-dialog',
+          path: '../../../lib/V-dialog.vue'
+        }
+      ]
+    }],
+    'demo-code'
   ]
 }

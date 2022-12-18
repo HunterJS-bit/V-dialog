@@ -15,6 +15,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^1.5.3"
+    "@vuepress/plugin-register-components": "^1.9.7",
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-demo-code": "^1.0.0"
   }
 }
