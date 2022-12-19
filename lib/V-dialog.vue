@@ -4,7 +4,7 @@ import { ref, onMounted, watch, withDefaults } from "vue";
 
 import type { VDialog, DialogElement } from "./types";
 
-const props = withDefaults(defineProps<VDialog>(), {
+const props = withDefaults(defineProps(), {
   open: false,
   isDialog: false,
   scrollable: false,
