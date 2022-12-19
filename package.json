@@ -21,7 +21,7 @@
     "preview": "vite preview",
     "build:types": "vue-tsc --project ./lib/types.ts --declaration --emitDeclarationOnly --outDir ./dist/main.d.ts ",
     "typecheck": "vue-tsc --project tsconfig.build-types.json --noEmit",
-    "test": "jest"
+    "test:unit": "jest __tests__/unit"
   },
   "dependencies": {
     "dialog-polyfill": "^0.5.6",
