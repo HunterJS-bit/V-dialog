@@ -53,6 +53,7 @@ module.exports = {
             '/guide/examples.md',
             '/guide/api.md',
             '/guide/events.md',
+            '/guide/slots.md'
           ],
         },
       ],
