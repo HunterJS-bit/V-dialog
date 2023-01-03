@@ -35,11 +35,7 @@ module.exports = {
     nav: [
       {
         text: 'Guide',
-        link: '/guide/',
-      },
-      {
-        text: 'Config',
-        link: '/config/'
+        link: '/guide/getting-started.html#prerequisites',
       },
       {
         text: 'Github',
@@ -52,9 +48,11 @@ module.exports = {
           text: 'Guide',
           collapsable: false,
           children: [
-            '/guide/',
+            // '/guide/',
             '/guide/getting-started.md',
-            '/guide/i18n.md',
+            '/guide/examples.md',
+            '/guide/api.md',
+            '/guide/events.md',
           ],
         },
       ],

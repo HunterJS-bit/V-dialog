@@ -1,21 +1,6 @@
-# I18n
+# Examples
 
 
-::: demo
-
-<div @click="onClick">Click me!</div>
-<v-dialog open=true>
-    <h1> Helloooooo </h1>
-</v-dialog>
-<h2> heee ,</h2>
-<script>
-export default {
-  methods: {
-    onClick: () => { window.alert(1) },
-  },
-}
-</script>
-:::
 
 ## Site I18n Config
 
