@@ -38,6 +38,10 @@ module.exports = {
         link: '/guide/getting-started.html#prerequisites',
       },
       {
+        text: 'Changelog',
+        link: '/changelog/'
+      },
+      {
         text: 'Github',
         link: 'https://github.com/HunterJS-bit/V-dialog'
       }
@@ -68,12 +72,6 @@ module.exports = {
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
     ['@vuepress/register-components', {
-      components: [
-        {
-          name: 'v-dialog',
-          path: '../../../lib/V-dialog.vue'
-        }
-      ]
     }],
     'demo-code'
   ]

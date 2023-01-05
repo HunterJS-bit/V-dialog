@@ -2,73 +2,82 @@
 
 
 
-## Site I18n Config
+## Base Demo
 
-To take advantage of multi-language support in VuePress, you first need to use the following file and directory structure:
+### Vue 2 Usage
 
-```
-docs
-├─ README.md
-├─ foo.md
-├─ nested
-│  └─ README.md
-└─ zh
-   ├─ README.md
-   ├─ foo.md
-   └─ nested
-      └─ README.md
-```
+This is a simple demo usage with Vue 2
 
-Then, specify the `locales` option in your [config file](./configuration.md#config-file):
+```vue
+<template>
+  <div>
+    <v-dialog 
+      :open="open">
+      <div>
+        <h1> I'm dialog content </h1>
+      </div>
+    </v-dialog>
+     <div class="toggleContainer">
+     <button @click="toggleDialog">
+       Toggle display 
+     </button> 
+  </div>
+</template>
 
-```ts
+<script>
+import Vdialog from 'v-dialog';
+
 export default {
-  locales: {
-    // The key is the path for the locale to be nested under.
-    // As a special case, the default locale can use '/' as its path.
-    '/': {
-      lang: 'en-US',
-      title: 'VuePress',
-      description: 'Vue-powered Static Site Generator',
-    },
-    '/zh/': {
-      lang: 'zh-CN',
-      title: 'VuePress',
-      description: 'Vue 驱动的静态网站生成器',
-    },
+  data() {
+    return {
+      open: false
+    };
   },
-}
+  components: {
+    vDialog: Vdialog
+  },
+  methods: {
+    toggleDialog() {
+      this.open = !this.open;
+    }
+  }
+};
+</script>
 ```
 
-If a locale does not have a `lang`, `title`, `description` or `head`, VuePress will fallback to the root-level values. You can omit the root level config as long as they are provided in each locale.
+### Vue 3 Usage
 
-::: tip
-Config reference: [locales](../reference/config.md#locales)
-:::
+Here is a simple demo usage with Vue 3 
 
-## Theme I18n Config
+```vue
+<script setup lang="ts">
+import Vdialog from "v-dialog";
+import { ref } from "vue";
+const isVisible = ref(false);
 
-VuePress does not restrict how themes provide multi-language support, so each theme may have different way to handle i18n, and some themes may not provide multi-language support at all. You'd better refer to the theme documentation for detailed guide.
-
-If you are using default theme, the multi-language support is the same as above:
-
-```ts
-import { defaultTheme } from 'vuepress'
-
-export default {
-  theme: defaultTheme({
-    locales: {
-      '/': {
-        selectLanguageName: 'English',
-      },
-      '/zh/': {
-        selectLanguageName: '简体中文',
-      },
-    },
-  }),
+const toggle = () => {
+  isVisible.value = !isVisible.value;
 }
+
+</script>
+
+<template>
+  <div>
+    <Vdialog
+      :open="isVisible"
+      class="v-dialog"
+    >
+      <div>
+        <h1> I'm dialog content </h1>
+      </div>
+    </Vdialog>
+    <button @click="toggle">show dialog</button>
+  </div>
+</template>
+
 ```
 
-::: tip
-Config reference: [Default Theme > locales](../reference/default-theme/config.md#locales)
-:::
+
+## Advanced Usage
+
+Will follow up...
