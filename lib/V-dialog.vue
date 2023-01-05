@@ -2,7 +2,21 @@
 import dialogPolyfill from "dialog-polyfill";
 import { ref, onMounted, watch, withDefaults } from "vue";
 
-import type { VDialog, DialogElement } from "./types";
+interface VDialog {
+  open?: boolean;
+  isModal?: boolean;
+  backdropStyles?: object | null;
+  scrollable?: false;
+  blur?: false;
+  contentClass?: object | [] | null;
+  fullscreen?: boolean;
+}
+
+interface DialogElement extends HTMLDialogElement {
+  showModal: () => void;
+  show: () => void;
+  close: () => void;
+}
 
 const props = withDefaults(defineProps<VDialog>(), {
   open: false,

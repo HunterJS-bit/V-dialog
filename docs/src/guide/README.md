@@ -1,4 +1,4 @@
-# Setup
+# Getting Started
 
 ## Installation
 Add `@v-dialog` in your Vue project.

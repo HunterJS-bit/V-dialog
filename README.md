@@ -26,7 +26,7 @@ yarn add v-dialog
 
 ## Demos
 
-## Usage
+## Base Usage
 
 Vue 2 usage
 
@@ -91,14 +91,13 @@ function toggle() {
 
 ## Options
 
-| Prop Name | Values |
-| ------ | ------ |
-| open | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+| Prop Name | Type |  Values |Default |
+| ------ | ------ | ------ | ------ |
+| open | [boolean] | true/false | false |
+| scrollable | [boolean] | true/false | false |
+| isDialog | [boolean] | true/false | false |
+| contentClass | [array/object] | true/false | null |
+| fullscreen | [boolean] | true/false | false |
 
 
 ## Changelog
