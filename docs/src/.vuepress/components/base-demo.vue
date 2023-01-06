@@ -12,11 +12,12 @@ export default {
   data() {
     return {
       msg: "Hello this is <demo-component>",
+      open: false,
     };
   },
   methods: {
     onToggle() {
-      console.log("On Toggle");
+      console.log("On toggle");
     },
   },
 };

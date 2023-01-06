@@ -35,11 +35,11 @@ module.exports = {
     nav: [
       {
         text: 'Guide',
-        link: '/guide/',
+        link: '/guide/getting-started.html#prerequisites',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'Changelog',
+        link: '/changelog/'
       },
       {
         text: 'Github',
@@ -52,9 +52,12 @@ module.exports = {
           text: 'Guide',
           collapsable: false,
           children: [
-            '/guide/',
+            // '/guide/',
             '/guide/getting-started.md',
-            '/guide/i18n.md',
+            '/guide/examples.md',
+            '/guide/api.md',
+            '/guide/events.md',
+            '/guide/slots.md'
           ],
         },
       ],
@@ -69,12 +72,6 @@ module.exports = {
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
     ['@vuepress/register-components', {
-      components: [
-        {
-          name: 'v-dialog',
-          path: '../../../lib/V-dialog.vue'
-        }
-      ]
     }],
     'demo-code'
   ]
