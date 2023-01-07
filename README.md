@@ -1,5 +1,6 @@
 # v-dialog
 
+
 ## Overview
 
 Vue dialog is a simplest way to create dialog or modal window on your site.
@@ -23,6 +24,9 @@ npm i -s v-dialog
 ```
 yarn add v-dialog
 ```
+## Documentation
+
+[Official Documentation](https://hunterjs-bit.github.io/V-dialog/)
 
 ## Demos
 

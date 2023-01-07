@@ -11,11 +11,13 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
+    "deploy": "vuepress build src && gh-pages -d src/.vuepress/dist",
     "docs:clean": "rimraf .vuepress/.temp .vuepress/.cache .vuepress/dist"
   },
   "license": "MIT",
   "devDependencies": {
     "@vuepress/plugin-register-components": "^1.9.7",
+    "gh-pages": "^4.0.0",
     "vuepress": "^1.5.3",
     "vuepress-plugin-demo-code": "^1.0.0"
   }
